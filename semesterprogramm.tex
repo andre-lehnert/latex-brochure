@@ -1,0 +1,805 @@
+% 
+% @autor Andre Lehnert, contact@andre-lehnert.de
+% @version 0.1
+% @date 24.01.2015
+%
+% Für mein Studium brauchte ich eine zweisitige Broschüre.
+% Hier ist das zusammengebastelte Ergebnis.
+% 
+% Das Dokument wurde anonymisiert.
+%
+%%
+%%%
+%%%%
+%%%%%
+%%%%%%
+%%%%%%%
+%%%%%%%%
+%%%%%%%%% AB HIER NICHTS ÄNDERN
+
+\documentclass[a4paper, twoside]{book}
+\usepackage[top=3cm,bottom=3cm,inner=2.9cm,outer=2.9cm]{geometry}
+
+\setlength{\headheight}{15pt}
+
+\usepackage{blindtext}
+\usepackage{lipsum}
+
+\usepackage{ngerman}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{lmodern}
+\usepackage[pdftex]{graphicx}
+\usepackage{multicol}
+\usepackage{sidecap}
+\usepackage{wrapfig}
+\usepackage{floatrow}
+\usepackage{caption}
+\usepackage{caption}
+\captionsetup{labelformat=empty, labelsep=none}
+\usepackage{changepage}
+\usepackage{csvsimple}
+\usepackage{tabularx, hhline}%tabelle auf textbreite
+\usepackage{xcolor}
+\usepackage{dcolumn}
+\usepackage{tabu}
+\usepackage{fancyhdr}
+
+%%% Hilfsmittel und Einstellungen
+%%
+%
+\newcommand \true {
+	\boolean{true}
+}
+\newcommand \false {
+	\boolean{false}
+}
+\newcommand \defaultPageStyle {plain}
+\newcommand \defaultFontSize {16}
+\newcommand \defaultLineSpacing {24}
+\newcommand \noHeader {blank-page}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead{}
+\fancyhead[RE,LO]{{\fontsize{16}{24} \selectfont \textbf{\leftmark}}}
+\fancyfoot{}
+%\fancyfoot[RE,LO]{{\fontsize{16}{24} \selectfont \thepage}}
+\renewcommand{\headrulewidth}{1pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead{}
+  \fancyhead[RE,LO]{{\fontsize{16}{24} \selectfont \textbf{\leftmark}}}
+  \fancyfoot{}
+  %\fancyfoot[RE,LO]{{\fontsize{16}{24} \selectfont \thepage}}
+  \renewcommand{\headrulewidth}{1pt}
+}
+\fancypagestyle{\noHeader}{
+  \fancyhf{}
+  \fancyhead{} 
+  \fancyfoot{} 
+  \renewcommand{\headrulewidth}{0pt}
+}
+\newcommand \pageTitle[1]{
+  %\section*{#1}
+  \markboth{#1}{}
+  \addcontentsline{toc}{section}{#1}
+}
+\newcommand \zitieren[2] {
+	{\glqq \emph{#1}\grqq}
+	\\
+	\emph{(#2)}
+}
+\newcommand \kasseninfo[7]{
+
+	\textbf{#7}
+	
+	\begin{tabbing}
+    XX \= XXXXXXXXXXXXXXXXXXX \kill    
+    \> #1\\
+    \> Konto-Nr.: #2\\
+    \> #3 (BLZ #4)\\
+    \> IBAN: #5\\
+    \> BIC: #6\\
+  	\end{tabbing}	
+}
+\newcommand \personinfo[8]{
+
+	\textbf{#1}
+	
+	\begin{tabbing}
+    XX \= XXXXXXXXXXXXXXXXXXXXXXX \kill    
+    \> #2, #3 aus #4\\
+    \> #5, #6\\
+    \> Tel: #7, #8\\
+  	\end{tabbing}	
+}
+\newcommand \programmZitat[2] {
+	
+	\ifthenelse{\equal{#1}{} \or \equal{#2}{}}{
+	
+	}{
+		 {\glqq \emph{#1}\grqq}
+	 	\mbox{\emph{{(#2)}}}
+	}	
+}
+
+
+%%%%%%%%% AB HIER MÜSSEN ERST ÄNDERUNGEN GEMACHT WERDEN
+%%%%%%%%
+%%%%%%%
+%%%%%%
+%%%%%
+%%%%
+%%%
+%% 
+%
+% Parameter des Semesterprogramms
+%
+% - Die Seitenreihenfolge wird hier festgelegt.
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+%%% Seite: Vorderseite
+%%
+%
+\newcommand \praefix{Präfix}
+\newcommand \praefixShort{}
+\newcommand \organisation{Organisation}
+\newcommand \postfix{Postfix}
+\newcommand \semester{Sommersemester}
+\newcommand \jahr{2015}
+
+\newcommand \wappen{platzhalter.png}
+
+
+
+%%% Vorstand
+%%
+%
+\newcommand \vorstandsVorstellungTitle{Unser Vorstand}
+	
+\newcommand \vorsitzender{Vorsitzender}
+\newcommand \vorsitzenderStudium{Dipl.-Ing.}
+\newcommand \vorsitzenderHeimat{Musterstadt}
+\newcommand \vorsitzenderStrasseHsNr{Sonnenallee 12}
+\newcommand \vorsitzenderPLZOrt{12345 Berlin}
+\newcommand \vorsitzenderPhone{0123 - 333 444 555}
+\newcommand \vorsitzenderMail{mail@example.com}
+
+\newcommand \vertreter{Vorsitzender}
+\newcommand \vertreterStudium{Dipl.-Ing.}
+\newcommand \vertreterHeimat{Musterstadt}
+\newcommand \vertreterStrasseHsNr{Sonnenallee 12}
+\newcommand \vertreterPLZOrt{12345 Berlin}
+\newcommand \vertreterPhone{0123 - 333 444 555}
+\newcommand \vertreterMail{mail@example.com}
+
+%% Schriftführer
+%
+\newcommand \schriftfuehrer{Vorsitzender}
+\newcommand \schriftfuehrerStudium{Dipl.-Ing.}
+\newcommand \schriftfuehrerHeimat{Musterstadt}
+\newcommand \schriftfuehrerStrasseHsNr{Sonnenallee 12}
+\newcommand \schriftfuehrerPLZOrt{12345 Berlin}
+\newcommand \schriftfuehrerPhone{0123 - 333 444 555}
+\newcommand \schriftfuehrerMail{mail@example.com}
+
+%% Kassierer
+%
+\newcommand \kassierer{Vorsitzender}
+\newcommand \kassiererStudium{Dipl.-Ing.}
+\newcommand \kassiererHeimat{Musterstadt}
+\newcommand \kassiererStrasseHsNr{Sonnenallee 12}
+\newcommand \kassiererPLZOrt{12345 Berlin}
+\newcommand \kassiererPhone{0123 - 333 444 555}
+\newcommand \kassiererMail{mail@example.com}
+
+
+%
+%%
+%%% Hier würden die Programmpunkte kommen
+%% 
+%
+
+%%% Seite: Legende
+%%
+%
+\newcommand \legendeTitle {Legende}
+\newcommand \veranstaltungsStatusA {miniplatzhalter.png}
+\newcommand \veranstaltungsStatusB {miniplatzhalter.png}
+\newcommand \veranstaltungsStatusAText {Status 1}
+\newcommand \veranstaltungsStatusBText {Status 2}
+
+%%% Konten
+%%
+%
+\newcommand \kontenTitle {Konten}
+
+\newcommand \getraenkeKontoinhaber{Kontoinhaber}
+\newcommand \getraenkeKontonummer{33 333 333}
+\newcommand \getraenkeBLZ{444 444 44}
+\newcommand \getraenkeIBAN{DE55 444 444 44 33 333 333}
+\newcommand \getraenkeBIC{XXXXDEMXXX}
+\newcommand \getraenkeBank{Sparkasse XY}
+
+
+
+%%% Rückseite
+%%
+%
+\newcommand \backsideStrasseHsNr{Sonnenallee 12}
+\newcommand \backsidePLZOrt{12345 Berlin}
+\newcommand \backsidePhone{0123 - 333 444}
+\newcommand \backsideMail{mail@example.com}
+\newcommand \backsideHomepage{www.example.com}
+\newcommand \backsideImage{platzhalter.png}
+
+
+%
+%%
+%%%
+%%%%
+%%%%%
+%%%%%%
+%%%%%%%
+%%%%%%%%
+%%%%%%%%% AB HIER NICHTS ÄNDERN 
+%%%%%%%%
+%%%%%%%
+%%%%%%
+%%%%%
+%%%%
+%%%
+%% 
+%
+% Der genaue Seitenaufbau der "Standardseiten" wird hier definiert. 
+% Ggf. müssen Rechtschreibfehler korrigiert werden.
+% Die Programmpunkte werden erst weiter unten definiert.
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\usepackage[
+	pdftitle={{Semesterprogramm der {\praefixShort} {\organisation} im {\semester} {\jahr}}},
+	pdfauthor={{\praefixShort} {\organisation}},
+	pdfsubject={Semesterprogramm},
+	pdfcreator={pdflatex},
+	%pdfpagemode=UseOutlines, % Beim Oeffnen Inhaltsverzeichnis anzeigen
+	pdfdisplaydoctitle=true, % Dokumenttitel statt Dateiname anzeigen.
+	pdflang=de,              % Sprache des Dokuments.
+	pdftoolbar=false,
+	pdffitwindow=true,
+	bookmarks=false,               % PDF-Lesezeichen
+    %bookmarksopen=false,     % Lesezeichenbaum aufgeklappt...
+    %bookmarksopenlevel=-2,   % ...um eine Ebene
+    %bookmarksnumbered=false,
+    pdfusetitle,             % LaTeX-Titelei als Metainfo nehmen
+    pdfstartpage={1},        % mit welcher Seite das PDF öffnen
+    pdfstartview={FitH},
+    hyperfootnotes=true,     % Links auf Fußnoten
+    hyperindex=true,         % Indexeinträge verweisen auf Text
+    linkbordercolor={0 1 1}, % Rahmenfarbe interne Links
+    menubordercolor={0 1 1}, % Rahmenfarbe Literaturlinks
+    urlbordercolor={1 0 0}   % Rahmenfarbe externe Links
+]{hyperref}
+
+\newcommand \cover {
+
+		{\fontsize{34}{48} \selectfont \praefix}
+	
+		\vspace*{1cm}	
+		\includegraphics[width=0.8\textwidth]{\wappen}
+		\\
+		\vspace*{1cm}
+	
+		{\fontsize{54}{54} \selectfont \organisation}
+		\\
+		\vspace*{1cm}
+		{\fontsize{34}{48} \selectfont \postfix}	
+		\\
+		\null
+		\vfill
+		{\fontsize{34}{48} \selectfont {\semester} {\jahr}}
+		
+}
+
+\newcommand \legende {
+\begin{figure}			
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,center},capbesidewidth=0.55\textwidth}}]{figure}[\FBwidth]
+{\caption[]{{\fontsize{16}{24} \selectfont \veranstaltungsStatusAText}}}
+{\includegraphics[width=1.1cm]{\veranstaltungsStatusA}}
+\end{figure}
+
+\begin{figure}		
+\floatbox[{\capbeside\thisfloatsetup{capbesideposition={right,center},capbesidewidth=0.55\textwidth}}]{figure}[\FBwidth]
+{\caption[]{{\fontsize{16}{24} \selectfont \veranstaltungsStatusBText}}}
+{\includegraphics[width=1.1cm]{\veranstaltungsStatusB}}
+\end{figure}
+
+\section*{Hinweise}
+\lipsum[1]
+}
+\newcommand \konten {   
+   	
+	\kasseninfo
+	{\getraenkeKontoinhaber}
+	{\getraenkeKontonummer}
+	{\getraenkeBank}
+	{\getraenkeBLZ}
+	{\getraenkeIBAN}
+	{\getraenkeBIC}
+	{Getränkekasse}	
+
+}
+\newcommand \vorstandsVorstellung {	
+			
+	\personinfo
+	{1. Vorsitzende}
+	{\vorsitzender}
+	{\vorsitzenderStudium}
+	{\vorsitzenderHeimat}
+	{\vorsitzenderStrasseHsNr}
+	{\vorsitzenderPLZOrt}
+	{\vorsitzenderPhone}
+	{\vorsitzenderMail}
+	
+	\personinfo
+	{2. Vorsitzende}
+	{\vertreter}
+	{\vertreterStudium}
+	{\vertreterHeimat}
+	{\vertreterStrasseHsNr}
+	{\vertreterPLZOrt}
+	{\vertreterPhone}
+	{\vertreterMail}
+	
+	\personinfo
+	{Schriftführer}
+	{\schriftfuehrer}
+	{\schriftfuehrerStudium}
+	{\schriftfuehrerHeimat}
+	{\schriftfuehrerStrasseHsNr}
+	{\schriftfuehrerPLZOrt}
+	{\schriftfuehrerPhone}
+	{\schriftfuehrerMail}
+	
+	\personinfo
+	{Kassierer}
+	{\kassierer}
+	{\kassiererStudium}
+	{\kassiererHeimat}
+	{\kassiererStrasseHsNr}
+	{\kassiererPLZOrt}
+	{\kassiererPhone}
+	{\kassiererMail}	
+
+}
+
+\newcommand \backside {
+	
+		\includegraphics[width=1\textwidth]{\backsideImage}
+		\null
+		\vfill	
+		{\praefixShort} {\organisation} {\postfix}
+		
+		\begin{multicols}{2}
+		\backsideStrasseHsNr\\
+		\backsidePLZOrt\\
+		Tel: \backsidePhone\\
+		\backsideMail
+		\end{multicols}	
+		
+		\backsideHomepage
+
+}
+
+
+%%% Seiten-Definition
+%%
+%
+% @param #1 : "blank-page" (keinen Header), "\defaultPageStyle" (mit Header)
+% @param #2 : Zentrierte Seite? "\true" | "\false"
+% @param #3 : Schriftgröße "\defaultFontSize" (16pt) | z.B. "12" (12pt)
+% @param #4 : Zeilenabstand "\defaultLineSpacing" (24pt) | z.B. "18" (18pt)
+% @param #5 : Titel der Seite
+% @param #6 : Inhalt der Seite
+\newcommand \addPage[6] {
+
+	\pagestyle{#1} % blank-page (keinen Header), plain (mit Header)
+	
+	\pageTitle{#5} % Text im Header
+	
+	\ifthenelse{#2}{ % if (zentriert)
+		\begin{center}
+	}{} % else
+	
+	\fontsize{#3}{#4} \selectfont
+	
+	%%% Seiteninhalt
+	%%
+	%
+	#6
+	%
+	%%
+	%%%
+	
+	\ifthenelse{#2}{ % if (zentriert)
+		\end{center}
+	}{} % else
+	
+	\pagestyle{\noHeader}
+	\newpage
+
+} 
+ 
+%%% Leere Seite
+%%
+%
+\newcommand \addBlankpage {
+
+	\addPage
+	{\noHeader}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{}
+	{}
+	
+}
+
+\newcommand \addEventPage[2] {
+
+	\addPage
+	{\defaultPageStyle}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{#1}
+	{#2}
+	
+}
+ 
+\newcommand \eventTable[6] {
+
+	\begin{tabularx}{1\textwidth}
+	{
+		p{1.8cm} 
+		p{2.2cm} 
+		X 
+	}	
+	#1
+	#2
+	#3
+	#4
+	#5
+	#6	
+	\end{tabularx}
+}
+
+\newcommand \eventTableWithTwoCols[6] {
+
+	\begin{tabularx}{1\textwidth}
+	{
+		p{4.35cm}
+		X 
+	}	
+	#1
+	#2
+	#3
+	#4
+	#5
+	#6	
+	\end{tabularx}
+}
+
+\newcommand \eventRow[3] {
+	#1 & #2	& #3\\
+	& &\\
+}
+
+\newcommand \eventRowWithTwoCols[2] {
+	#1 & #2\\
+	&\\
+}
+
+\newcommand \emptyRow {
+	& &\\
+}
+
+\newcommand \eventDamen {
+	\includegraphics[width=0.74cm]{\veranstaltungsStatusB}
+}
+
+\newcommand \eventAbendgardrobe{
+	\includegraphics[width=0.74cm]{\veranstaltungsStatusA}
+}
+
+\newcommand \eventDateCol[4] {
+	{#1. #2.}\ifthenelse{#3}{\eventDamen}{}\ifthenelse{#4}{\eventAbendgardrobe}{} 
+}
+
+\newcommand \eventIntervalCol[6] {
+	{#1. #2. -- #3. #4}\ifthenelse{#5}{\eventDamen}{}\ifthenelse{#6}{\eventAbendgardrobe}{} 
+}
+
+\newcommand \eventTimeCol[3] {
+	#1 #2. (#3)
+}
+
+\newcommand \eventDescriptionCol[4] {
+	\textbf{#1} #2 \programmZitat{#3}{#4}
+}
+
+\newcommand \eventBox[3] {
+
+	\begin{tabularx}{\textwidth}{||XcX||}
+    \hhline{|t:===:t|}    
+    &															&\\  
+    & #1														&\\ 
+    &															&\\  
+    & \textbf{#2} 												&\\  
+    &															&\\  
+    & \emph{#3} 												&\\
+    &															&\\    
+    \hhline{|b:===:b|}
+  	\end{tabularx}
+
+}
+
+\newcommand \eventBoxBottom[3] {
+	\null
+	\vfill
+	\begin{tabularx}{\textwidth}{||XcX||}
+    \hhline{|t:===:t|}    
+    &															&\\  
+    & #1														&\\ 
+    &															&\\  
+    & \textbf{#2} 												&\\  
+    &															&\\  
+    & \emph{#3} 												&\\
+    &															&\\    
+    \hhline{|b:===:b|}
+  	\end{tabularx}
+
+}
+
+\newcommand \announcement[3] {
+
+	\begin{center}						
+    #1
+    
+    \begin{tabularx}{1\textwidth}
+	{
+		p{1.8cm} 
+		p{2.2cm} 
+		X 
+	} 
+	\emptyRow	
+  	\end{tabularx}
+  											
+    \textbf{#2} 
+     
+    \begin{tabularx}{1\textwidth}
+	{
+		p{1.8cm} 
+		p{2.2cm} 
+		X 
+	} 
+	\emptyRow	
+  	\end{tabularx} 
+  	 										
+    \emph{#3}
+	\end{center}  	
+}
+
+\newcommand \announcementBottom[3] {
+
+	\null
+	\vfill
+
+	\begin{center}						
+    #1
+    
+    \begin{tabularx}{1\textwidth}
+	{
+		p{1.8cm} 
+		p{2.2cm} 
+		X 
+	} 
+	\emptyRow	
+  	\end{tabularx}
+  											
+    \textbf{#2} 
+     
+    \begin{tabularx}{1\textwidth}
+	{
+		p{1.8cm} 
+		p{2.2cm} 
+		X 
+	} 
+	\emptyRow	
+  	\end{tabularx} 
+  	 										
+    \emph{#3}
+	\end{center}  	
+}
+
+%
+%%
+%%%
+%%%%
+%%%%%
+%%%%%%
+%%%%%%%
+%%%%%%%%
+%%%%%%%%% BIS HIER NICHTS ÄNDERN 
+%%%%%%%%
+%%%%%%%
+%%%%%%
+%%%%%
+%%%%
+%%%
+%% 
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% Hier beginnt das Dokument
+%
+% - Die Seitenreihenfolge wird hier festgelegt.
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
+\begin{document}
+
+% Vorderseite
+\frontmatter
+
+	% Cover
+	\addPage
+	{\noHeader}
+	{\true}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{}
+	{\cover}	
+	
+	% Leere Seite
+	\addBlankpage
+	
+% Innenseiten
+\mainmatter	
+
+	% lipsum
+	\addPage
+	{\defaultPageStyle}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{Lipsum}
+	{\lipsum}
+
+	
+	% Vorstand
+	\addPage
+	{\defaultPageStyle}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{\vorstandsVorstellungTitle}
+	{\vorstandsVorstellung}
+	
+	
+%
+%%
+%%%
+%%%%
+%%%%%
+%%%%%%
+%%%%%%%
+%%%%%%%%
+%%%%%%%%% AB HIER KOMMEN DIE PROGRAMMPUNKTE
+%%%%%%%%
+%%%%%%%
+%%%%%%
+%%%%%
+%%%%
+%%%
+%% 
+%
+	\addEventPage
+	{Oktober} % Monat
+	{
+		\eventTable
+		{
+			\eventRow
+			{ \eventDateCol{Mo}{13}{\true}{\false} }
+			{}
+			{ 
+				\eventDescriptionCol
+				{Vorlesungsbeginn}
+				{} % kein Untertitel
+				{} % kein Zitat
+				{} %
+			}		
+		}
+		{
+			\eventRow
+			{ \eventDateCol{Di}{14}{\true}{\true} }
+			{
+				\eventTimeCol	
+				{14.00}			
+				{hst}			
+				{alle} 					
+			}
+			{ 
+				\eventDescriptionCol
+				{1. Sitzung}
+				{mit der Wahl des neuen Vorstands}
+				{Lorem Ipsum} % kein Zitat
+				{Max Mustermann} %
+			}		
+		}
+		{}
+		{}
+		{}
+		{}
+		
+		\eventBoxBottom
+		{15. Oktober um 20.00 hst.}
+		{Vortragsabend}
+		{Zum Thema der Elektromobilität}
+	}	
+	
+		
+%
+%%
+%%%
+%%%%
+%%%%%
+%%%%%%
+%%%%%%%
+%%%%%%%%
+%%%%%%%%% BIS HIER KOMMEN DIE PROGRAMMPUNKTE
+%%%%%%%%
+%%%%%%%
+%%%%%%
+%%%%%
+%%%%
+%%%
+%% 
+%	
+	
+	% Legende
+	\addPage
+	{\defaultPageStyle}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{\legendeTitle}
+	{\legende}
+	
+	% Konten
+	\addPage
+	{\defaultPageStyle}
+	{\false}
+	{\defaultFontSize}
+	{\defaultLineSpacing}
+	{\kontenTitle}
+	{\konten}
+	
+	
+	
+	
+% Rückseite
+\backmatter
+
+	% Rückseite
+	\addPage
+	{\noHeader}
+	{\true}
+	{26} % Schriftgröße
+	{34}
+	{}
+	{\backside}	
+	
+\end{document}
